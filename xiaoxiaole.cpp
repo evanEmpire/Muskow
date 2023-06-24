@@ -1,17 +1,18 @@
 #include<bits/stdc++.h>
 using namespace std;
-int n,t,f;
-char s[51];
+int t,n,a[51];
+bool flag=true;
 int main(){
-    cin>>n>>t;
-    for(int i=1;i<=n;i++)cin>>s[i];
-    while(f<t){
-        for(int i=1;i<=n;i++){
-            if(s[i]=='B'&&s[i+1]=='G'){
-                swap(s[i],s[i+1]);
-                i++;
-            }
-        }f++;
-    }for(int i=1;i<=n;i++)cout<<s[i];
-    return 0;
+	cin>>t;
+	while(t--){
+		cin>>n;
+		for(int i=1;i<=n;i++)cin>>a[i];
+        if(n==1){
+            cout<<"YES"<<endl;
+            continue;
+        }sort(a+1,a+1+n);
+		for(int i=1;i<n;i++)if(a[i+1]-a[i]>1)flag=false;
+		if(flag)cout<<"YES"<<endl;
+		else cout<<"NO"<<endl;
+	}return 0;
 }
